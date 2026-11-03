@@ -8,24 +8,20 @@ import Contact from './components/contact.jsx';
 import FloatingSocials from './components/FloatingSocials.jsx';
 import Footer from './components/footer.jsx';
 import WelcomePopup from './components/WelcomePopup.jsx';
+import LocalBusinessSchema from './LocalBusinessSchema.jsx';
 
 export default function App() {
   return (
     <div>
-      {/* Welcome Popup on Load */}
+      <LocalBusinessSchema />
       <WelcomePopup />
-
       <Navbar />
       <Hero />
       <EventsAndHighlights />
       <Membership />
       <Schedule />
       <Contact />
-      
-      {/* Floating Action Buttons */}
       <FloatingSocials />
-
-      {/* Main Footer Component */}
       <Footer />
     </div>
   );
