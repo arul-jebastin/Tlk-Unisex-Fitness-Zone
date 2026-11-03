@@ -1,9 +1,11 @@
+
 import React from 'react';
 
 export default function Hero() {
   return (
-    <section 
-      className="hero-section" 
+    <section
+      className="hero-section"
+      aria-label="TLK Gym in Sriperumbudur"
       style={{
         position: 'relative',
         minHeight: '85vh',
@@ -13,7 +15,7 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '120px 8% 100px 8%',
-        background: '#0a0a0a', 
+        background: '#0a0a0a',
         overflow: 'hidden',
         color: '#ffffff',
         borderTop: '2px solid #dc2626',
@@ -22,7 +24,6 @@ export default function Hero() {
       }}
     >
       <style>{`
-        /* Small Red Glowing Call Button Style */
         .btn-call-glow-small {
           background-color: rgba(220, 38, 38, 0.15);
           color: #ffffff;
@@ -36,10 +37,12 @@ export default function Hero() {
           align-items: center;
           justify-content: center;
           gap: 6px;
-          box-shadow: 0 0 10px rgba(220, 38, 38, 0.4), inset 0 0 6px rgba(220, 38, 38, 0.2);
+          box-shadow: 0 0 10px rgba(220, 38, 38, 0.4),
+            inset 0 0 6px rgba(220, 38, 38, 0.2);
           transition: all 0.3s ease-in-out;
           margin: 0 auto;
         }
+
         .btn-call-glow-small:hover {
           background-color: rgba(220, 38, 38, 0.3);
           border-color: #ef4444;
@@ -47,7 +50,6 @@ export default function Hero() {
           transform: translateY(-2px);
         }
 
-        /* Container for Main Button + Centered Small Call Button */
         .hero-action-container {
           display: flex;
           flex-direction: column;
@@ -66,21 +68,24 @@ export default function Hero() {
         @media (max-width: 900px) {
           .hero-section {
             padding: 80px 20px 60px 20px !important;
-            justifyContent: center !important;
-            textAlign: center !important;
+            justify-content: center !important;
+            text-align: center !important;
           }
+
           .hero-content {
             margin: 0 auto 32px auto !important;
           }
+
           .hero-action-container {
             align-items: center !important;
           }
         }
       `}</style>
 
-      <img 
-        src="/images/main%20logo.jpg" 
-        alt="Gym Background Logo" 
+      <img
+        src="/images/main%20logo.jpg"
+        alt=""
+        aria-hidden="true"
         style={{
           position: 'absolute',
           top: 0,
@@ -88,21 +93,29 @@ export default function Hero() {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          opacity: 0.2, 
+          opacity: 0.2,
           zIndex: 1,
           pointerEvents: 'none',
         }}
       />
 
-      <div className="hero-content" style={{ maxWidth: '600px', position: 'relative', zIndex: 2, marginBottom: '32px' }}>
-        <h1 
-          style={{ 
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
-            fontWeight: 900, 
-            fontStyle: 'italic', 
-            textTransform: 'uppercase', 
-            lineHeight: 1.1, 
-            marginBottom: '20px'
+      <div
+        className="hero-content"
+        style={{
+          maxWidth: '600px',
+          position: 'relative',
+          zIndex: 2,
+          marginBottom: '32px',
+        }}
+      >
+        <h1
+          style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+            fontWeight: 900,
+            fontStyle: 'italic',
+            textTransform: 'uppercase',
+            lineHeight: 1.1,
+            marginBottom: '20px',
           }}
         >
           <span style={{ color: '#dc2626' }}>TLK</span>{' '}
@@ -111,47 +124,84 @@ export default function Hero() {
           <span style={{ color: '#ffffff' }}>FITNESS ZONE</span>
         </h1>
 
-        <p style={{ color: '#d4d4d4', marginTop: '16px', lineHeight: 1.6, fontSize: '1rem' }}>
-          Push past average. Become unstoppable. At{' '}
-          <strong style={{ color: '#dc2626' }}>TLK</strong>{' '}
-          <span style={{ color: '#ffffff', fontWeight: 'bold' }}>UNISEX FITNESS ZONE</span>, we combine elite athletic conditioning, high-intensity strength training, and strict discipline for total physical transformation.
+        <h2
+          style={{
+            color: '#dc2626',
+            fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+            fontWeight: 700,
+            marginBottom: '16px',
+          }}
+        >
+          Gym in Sriperumbathur, Tamil Nadu
+        </h2>
+
+        <p
+          style={{
+            color: '#d4d4d4',
+            marginTop: '16px',
+            lineHeight: 1.6,
+            fontSize: '1rem',
+          }}
+        >
+          Welcome to{' '}
+          <strong style={{ color: '#dc2626' }}>
+            TLK
+          </strong>{' '}
+          <strong style={{ color: '#ffffff' }}>
+            UNISEX FITNESS ZONE
+          </strong>
+          , your local fitness destination in Sriperumbudur
+          (Sriperumbathur), Tamil Nadu. Explore fitness and
+          strength training in a dedicated gym environment.
         </p>
 
-        {/* Action Container: Start Your Journey and Centered Small Call Us Button underneath */}
         <div className="hero-action-container">
           <div className="action-button-wrapper">
-            <a href="#contact" className="btn-red">Start Your Journey &rarr;</a>
-            
-            {/* Small size centered Call Us button under Start Your Journey */}
-            <a href="tel:+919486290016" className="btn-call-glow-small">
+            <a href="#contact" className="btn-red">
+              Start Your Journey &rarr;
+            </a>
+
+            <a
+              href="tel:+919486290016"
+              className="btn-call-glow-small"
+              aria-label="Call TLK Unisex Fitness Zone"
+            >
               <span>📞</span> Call Us: +91 9486290016
             </a>
           </div>
         </div>
       </div>
 
-      <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '420px', margin: '0 auto' }}>
-        <div 
-          style={{ 
-            height: '420px', 
-            background: 'rgba(23, 23, 23, 0.6)', 
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          width: '100%',
+          maxWidth: '420px',
+          margin: '0 auto',
+        }}
+      >
+        <div
+          style={{
+            height: '420px',
+            background: 'rgba(23, 23, 23, 0.6)',
             backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)', 
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
-          <img 
-            src="/images/hero1.jpg" 
-            alt="Hero Athlete Visual" 
+          <img
+            src="/images/hero1.jpg"
+            alt="TLK Unisex Fitness Zone gym"
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover'
+              objectFit: 'cover',
             }}
           />
         </div>
