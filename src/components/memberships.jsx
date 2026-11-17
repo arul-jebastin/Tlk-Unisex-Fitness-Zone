@@ -1,18 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { supabase } from './supabaseClient';
 
-const studentPlans = [
+const defaultStudentPlans = [
   { name: "School Students", price: "₹600" },
   { name: "College Students", price: "₹800" },
 ];
 
-const strengthTrainingPlans = [
+const defaultStrengthPlans = [
   { period: "Monthly", price: "₹1,200" },
   { period: "3 Month", price: "₹2,800" },
   { period: "6 Month", price: "₹5,000", badge: "+1 Month Free" },
   { period: "1 Year", price: "₹6,999", badge: "+2 Months Free" },
 ];
 
-const cardioStrengthPlans = [
+const defaultCardioPlans = [
   { period: "Monthly", price: "₹1,500" },
   { period: "3 Month", price: "₹3,800" },
   { period: "6 Month", price: "₹7,000", badge: "+1 Month Free" },
@@ -21,6 +22,29 @@ const cardioStrengthPlans = [
 
 export default function Membership() {
   const containerRef = useRef(null);
+  const [studentPlans, setStudentPlans] = useState(defaultStudentPlans);
+  const [strengthTrainingPlans, setStrengthTrainingPlans] = useState(defaultStrengthPlans);
+  const [cardioStrengthPlans, setCardioStrengthPlans] = useState(defaultCardioPlans);
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      const { data } = await supabase
+        .from('membership_plans')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      if (data && data.length > 0) {
+        const students = data.filter(p => p.category === 'student');
+        const strength = data.filter(p => p.category === 'strength').map(p => ({ ...p, period: p.name }));
+        const cardio = data.filter(p => p.category === 'cardio').map(p => ({ ...p, period: p.name }));
+
+        if (students.length > 0) setStudentPlans(students);
+        if (strength.length > 0) setStrengthTrainingPlans(strength);
+        if (cardio.length > 0) setCardioStrengthPlans(cardio);
+      }
+    };
+    fetchPlans();
+  }, []);
 
   useEffect(() => {
     let intervalId = null;
@@ -237,7 +261,6 @@ export default function Membership() {
               boxShadow: '0 0 15px rgba(209, 213, 219, 0.12), inset 0 0 8px rgba(255, 255, 255, 0.03)'
             }}
           >
-            {/* Silver-Grey Tone Underline for School & College Students */}
             <div style={{ width: '100%', borderBottom: '2px solid rgba(209, 213, 219, 0.4)', paddingBottom: '16px', marginBottom: '22px', textAlign: 'center', boxShadow: '0 4px 10px rgba(209, 213, 219, 0.15)' }}>
               <h3 style={{ fontSize: '1.3rem', fontWeight: 900, fontStyle: 'italic', textTransform: 'uppercase', margin: 0 }}>
                 <span style={{ marginRight: '6px' }}>🎓</span>
@@ -271,7 +294,6 @@ export default function Membership() {
           }}
         >
           <div style={{ width: '100%' }}>
-            {/* Silver-Grey Tone Underline for Strength Training */}
             <div style={{ borderBottom: '2px solid rgba(209, 213, 219, 0.4)', paddingBottom: '16px', marginBottom: '22px', textAlign: 'center', boxShadow: '0 4px 10px rgba(209, 213, 219, 0.15)' }}>
               <h3 style={{ fontSize: '1.3rem', fontWeight: 900, fontStyle: 'italic', textTransform: 'uppercase', margin: 0 }}>
                 <span style={{ marginRight: '6px' }}>🏋️‍♂️</span>
@@ -310,7 +332,6 @@ export default function Membership() {
           }}
         >
           <div style={{ width: '100%' }}>
-            {/* Silver-Grey Tone Underline for Cardio + Strength */}
             <div style={{ borderBottom: '2px solid rgba(209, 213, 219, 0.4)', paddingBottom: '16px', marginBottom: '22px', textAlign: 'center', boxShadow: '0 4px 10px rgba(209, 213, 219, 0.15)' }}>
               <h3 style={{ fontSize: '1.2rem', fontWeight: 900, fontStyle: 'italic', textTransform: 'uppercase', margin: 0 }}>
                 <span style={{ marginRight: '6px' }}>❤️</span>

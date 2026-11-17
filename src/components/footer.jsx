@@ -118,7 +118,6 @@ export default function Footer() {
       <div className="footer-container">
         {/* Col 1: Brand Info */}
         <div className="footer-col">
-          {/* Entire Title in Pure White */}
           <h3>
             TLK UNISEX FITNESS ZONE
           </h3>
@@ -126,7 +125,6 @@ export default function Footer() {
             Push your limits, build ultimate strength, and transform your body with professional guidance and top-notch equipment.
           </p>
           
-          {/* Replaced Icon Buttons with Vector SVG Icons */}
           <div style={{ display: 'flex' }}>
             {/* WhatsApp Icon */}
             <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="footer-social-icon" title="WhatsApp">
@@ -165,11 +163,10 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Col 3: Contact Details (Phone, Email, Location 3rd) */}
+        {/* Col 3: Contact Details */}
         <div className="footer-col">
           <h3>Get In Touch</h3>
           
-          {/* Phone Item */}
           <div className="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -177,7 +174,6 @@ export default function Footer() {
             <a href={`tel:${PHONE_NUMBER}`} className="static-contact-link">{PHONE_NUMBER}</a>
           </div>
 
-          {/* Email Item */}
           <div className="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -186,7 +182,6 @@ export default function Footer() {
             <a href={`mailto:${EMAIL_ADDRESS}`} className="static-contact-link" style={{ wordBreak: 'break-all' }}>{EMAIL_ADDRESS}</a>
           </div>
 
-          {/* Location Item (3rd position) */}
           <div className="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
@@ -199,10 +194,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Footer Bottom */}
+      {/* Footer Bottom with Admin Link */}
       <div className="footer-bottom">
         <div>© 2026 TLK UNISEX FITNESS ZONE. ALL RIGHTS RESERVED.</div>
-        <div>POWERED BY REACT & VITE</div>
+        <div>
+          POWERED BY REACT & VITE |{' '}
+          <a href="#admin" style={{ color: '#737373', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = '#dc2626'} onMouseLeave={(e) => e.target.style.color = '#737373'}>
+            ADMIN
+          </a>
+        </div>
       </div>
     </footer>
   );
